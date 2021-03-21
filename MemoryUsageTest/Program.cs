@@ -9,20 +9,20 @@ namespace MemoryUsageTest
 
         private static void Main(string[] args)
         {
-            var keysPressed = 0;
+            var countOfKeysPressed = 0;
             var random = new Random(Environment.TickCount);
 
             while (true)
             {
-                var key = Console.ReadKey();
+                var keyPressed = Console.ReadKey();
 
-                if (key.Key == ConsoleKey.Escape)
+                if (keyPressed.Key == ConsoleKey.Escape)
                     break;
 
-                if (key.Key != ConsoleKey.Enter)
+                if (keyPressed.Key != ConsoleKey.Enter)
                     continue;
 
-                keysPressed++;
+                countOfKeysPressed++;
 
                 var randomValue = random.Next(0, 1000);
                 var isOdd = randomValue % 2 == 0;
@@ -30,7 +30,7 @@ namespace MemoryUsageTest
                 Log(isOdd, "Log data", new { isOdd, randomValue });
             }
 
-            Console.WriteLine($"Keys pressed: {keysPressed}");
+            Console.WriteLine($"Keys pressed: {countOfKeysPressed}");
             Console.WriteLine($"Logs count: {logMessages.Count}");
 
             Console.ReadKey();
